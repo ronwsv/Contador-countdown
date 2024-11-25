@@ -1,26 +1,40 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Title from './components/Title'
 import Counter from './components/Counter'
 import DateForm from './components/DateForm'
-import NewYear from './assets/newyear.png'
+import Confetti from './components/Confetti'
 import useCountdown from './hooks/useCountdown'
 import './App.css'
 
 function App() {
-  const [targetDate, setTargetDate] = useState("Jan 1, 2025 00:00:00")
-  const [eventName, setEventName] = useState("Contagem regressiva para 2025")
+  const [targetDate, setTargetDate] = useState(null)
+  const [eventName, setEventName] = useState("")
   const [showForm, setShowForm] = useState(true)
+  const [background, setBackground] = useState("")
+  const [showConfetti, setShowConfetti] = useState(false)
   
   const [day, hour, minute, second] = useCountdown(targetDate)
+
+  useEffect(() => {
+    if (day === 0 && hour === 0 && minute === 0 && second === 0) {
+      setShowConfetti(true)
+    }
+  }, [day, hour, minute, second])
 
   const handleDateSubmit = (data) => {
     setTargetDate(data.date)
     setEventName(data.name)
+    setBackground(data.background)
     setShowForm(false)
+    setShowConfetti(false)
   }
 
   return (
-    <div className="App" style={{backgroundImage:`url(${NewYear})`}}> 
+    <div className="App" style={{
+      backgroundImage: background ? `url(${background})` : 'none',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center'
+    }}> 
       <div className='container'>
         {showForm ? (
           <DateForm onDateSubmit={handleDateSubmit} />
@@ -39,6 +53,7 @@ function App() {
           </>
         )}
       </div>
+      {showConfetti && <Confetti />}
     </div>
   )
 }

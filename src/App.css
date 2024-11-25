@@ -72,3 +72,23 @@ button:hover {
 .reset-button:hover {
   background-color: #545b62;
 }
+
+.radio-group {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+input[type="file"] {
+  width: 100%;
+  padding: 0.5rem;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
