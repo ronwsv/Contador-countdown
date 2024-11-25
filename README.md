@@ -3,6 +3,10 @@
 
 ![image](https://github.com/user-attachments/assets/e6ff845c-faf1-43ee-9a6c-a8de6ebd2638)
 
+upgrade adicionei a função de adicionar imagem url ou arquivo
+![image](https://github.com/user-attachments/assets/0f0dd5b5-5ab5-4b5e-aa48-02ad7fdca3cc)
+
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
